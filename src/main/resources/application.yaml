@@ -1,0 +1,27 @@
+server:
+  port: ${SERVER_PORT:9003} 
+   
+spring:
+  application:
+    name: colegio
+  mongodb:
+    database: colegio
+    uri: "${SPRING_MONGODB_URI:mongodb+srv://jose_db_user:jose73109594@cluster0.7xjfgmd.mongodb.net/colegio}"
+  data:
+    mongodb:
+      auto-index-creation: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
