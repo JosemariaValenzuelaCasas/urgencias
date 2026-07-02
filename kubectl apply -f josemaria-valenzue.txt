@@ -1,0 +1,42 @@
+kubectl apply -f josemaria-valenzuela-41-namespace.yml
+kubectl apply -f josemaria-valenzuela-41-secret.yml
+kubectl apply -f josemaria-valenzuela-41-deployment.yml
+kubectl apply -f josemaria-valenzuela-41-service.yml
+
+kubectl get pods -n josemaria-valenzuela-41-namespace
+
+opción 1
+minikube service josemaria-valenzuela-41-service -n josemaria-valenzuela-41-namespace -p cluster-backend --url
+opción 2
+kubectl port-forward svc/josemaria-valenzuela-41-service 30001:30001 -n josemaria-valenzuela-41-namespace
+
+obtener servicios
+kubectl get svc -A
+
+logs
+kubectl logs josemaria-valenzuela-41-deployment-5dbd58db77-psw5f -n josemaria-valenzuela-41-namespace
+
+kubectl logs josemaria-valenzuela-41-deployment-pe-7bb84c698f-9fsz9 -n josemaria-valenzuela-41-namespace-pe
+
+reiniciar pods
+kubectl rollout restart deployment/josemaria-valenzuela-41-deployment -n josemaria-valenzuela-41-namespace
+
+
+
+
+kubectl apply -f josemaria-valenzuela-41-namespace-fe.yml
+kubectl apply -f josemaria-valenzuela-41-secret-fe.yml
+kubectl apply -f josemaria-valenzuela-41-deployment-fe.yml
+kubectl apply -f josemaria-valenzuela-41-service-fe.yml
+
+kubectl get pods -n josemaria-valenzuela-41-namespace-fe
+
+
+minikube service josemaria-valenzuela-41-service-fe -n josemaria-valenzuela-41-namespace-fe -p cluster-frontend --url
+
+kubectl rollout restart deployment/josemaria-valenzuela-41-deployment-fe -n josemaria-valenzuela-41-namespace-fe
+
+
+
+imagen minikube
+docker pull gcr.io/k8s-minikube/kicbase:v0.0.50
