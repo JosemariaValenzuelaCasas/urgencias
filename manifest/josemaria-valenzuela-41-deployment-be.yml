@@ -1,0 +1,23 @@
+# kubectl apply -f josemaria-valenzuela-41-deployment-be.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: josemaria-valenzuela-41-deployment-be
+  namespace: josemaria-valenzuela-41-namespace-be
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: josemaria-valenzuela-41-deployment-be     # Debe coincidir con las etiquetas del Service
+  template:
+    metadata:
+      labels:
+        app: josemaria-valenzuela-41-deployment-be    # Debe coincidir con las etiquetas del Service
+    spec:
+      containers:
+      - name: josemaria-valenzuela-41-container-be
+        image: josemariavalenzuela/pruebagit:1.0   # Reemplaza con tu imagen Docker Hub
+        imagePullPolicy: IfNotPresent        # Evitar traer siempre la última versión si hay una actual
+        envFrom:
+        - secretRef:
+            name: josemaria-valenzuela-41-secret-be # Esto cargará todos los valores como variables de entorno

@@ -1,0 +1,6 @@
+# kubectl create namespace josemaria-valenzuela-41-namespace-be (COMANDO)
+# kubectl apply -f josemaria-valenzuela-41-namespace-be.yml (yml)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: josemaria-valenzuela-41-namespace-be

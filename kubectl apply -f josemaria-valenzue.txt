@@ -1,25 +1,25 @@
-kubectl apply -f josemaria-valenzuela-41-namespace.yml
-kubectl apply -f josemaria-valenzuela-41-secret.yml
-kubectl apply -f josemaria-valenzuela-41-deployment.yml
-kubectl apply -f josemaria-valenzuela-41-service.yml
+kubectl apply -f josemaria-valenzuela-41-namespace-be.yml
+kubectl apply -f josemaria-valenzuela-41-secret-be.yml
+kubectl apply -f josemaria-valenzuela-41-deployment-be.yml
+kubectl apply -f josemaria-valenzuela-41-service-be.yml
 
-kubectl get pods -n josemaria-valenzuela-41-namespace
+kubectl get pods -n josemaria-valenzuela-41-namespace-be
 
 opción 1
-minikube service josemaria-valenzuela-41-service -n josemaria-valenzuela-41-namespace -p cluster-backend --url
+minikube service josemaria-valenzuela-41-service-be -n josemaria-valenzuela-41-namespace-be -p cluster-backend --url
 opción 2
-kubectl port-forward svc/josemaria-valenzuela-41-service 30001:30001 -n josemaria-valenzuela-41-namespace
+kubectl port-forward svc/josemaria-valenzuela-41-service-be 30001:30001 -n josemaria-valenzuela-41-namespace-be
 
 obtener servicios
 kubectl get svc -A
 
 logs
-kubectl logs josemaria-valenzuela-41-deployment-5dbd58db77-psw5f -n josemaria-valenzuela-41-namespace
+kubectl logs josemaria-valenzuela-41-deployment-be-5dbd58db77-psw5f -n josemaria-valenzuela-41-namespace-be
 
-kubectl logs josemaria-valenzuela-41-deployment-pe-7bb84c698f-9fsz9 -n josemaria-valenzuela-41-namespace-pe
+kubectl logs josemaria-valenzuela-41-deployment-be-7bb84c698f-9fsz9 -n josemaria-valenzuela-41-namespace-be
 
 reiniciar pods
-kubectl rollout restart deployment/josemaria-valenzuela-41-deployment -n josemaria-valenzuela-41-namespace
+kubectl rollout restart deployment/josemaria-valenzuela-41-deployment-be -n josemaria-valenzuela-41-namespace-be
 
 
 
@@ -33,6 +33,8 @@ kubectl get pods -n josemaria-valenzuela-41-namespace-fe
 
 
 minikube service josemaria-valenzuela-41-service-fe -n josemaria-valenzuela-41-namespace-fe -p cluster-frontend --url
+
+kubectl port-forward svc/josemaria-valenzuela-41-service-fe 30001:30001 -n josemaria-valenzuela-41-namespace-fe
 
 kubectl rollout restart deployment/josemaria-valenzuela-41-deployment-fe -n josemaria-valenzuela-41-namespace-fe
 
